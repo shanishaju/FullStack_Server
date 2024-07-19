@@ -10,6 +10,9 @@ const cors = require('cors')
 //after creating routes file... import the router
 const router = require('./routes')
 
+//import connection.js
+require('./connection')
+
 //create express server
 const psServer = express()
 
