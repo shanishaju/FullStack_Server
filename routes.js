@@ -13,5 +13,8 @@ const router = new express.Router()
 //register
 router.post('/register',userController.registerController )
 
+
+//Login
+router.post('/login',)
 // 4 export the Rputer
 module.exports = router

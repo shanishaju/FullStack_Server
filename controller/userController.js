@@ -32,3 +32,23 @@ exports.registerController= async(req,res)=>{
               res.status(401).json(`registration failed due to ${error} `)     
        }
 }
+
+//login
+exports.loginController = async (req,res)=>{
+       const {username  , password}= req.body
+       console.log(username, password);
+       try {
+              const existingUser =await users.findOne({email,password})
+              if(existingUser){
+                     res.status(200).json(existingUser)
+              }
+              else{
+                     res.status(406).json("Invalid Username or Password")
+              }
+              
+       } catch (error) {
+              res.status(401).json(error)
+              
+       }
+
+} 
