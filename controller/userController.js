@@ -40,15 +40,14 @@ exports.registerController= async(req,res)=>{
 
 //login
 exports.loginController = async (req,res)=>{
-       const {username  , password}= req.body
-       console.log(username, password);
+       const {email,password}= req.body
        try {
               const existingUser =await users.findOne({email,password})
               if(existingUser){
                      //token
                      const token= jwt.sign({userId:existingUser._id},'secretKey')
 
-                     res.status(200).json(existingUser , token)
+                     res.status(200).json({existingUser,token})
               }
               else{
                      res.status(406).json("Invalid Username or Password")

@@ -15,6 +15,6 @@ router.post('/register',userController.registerController )
 
 
 //Login
-router.post('/login',)
+router.post('/login',userController.loginController)
 // 4 export the Rputer
 module.exports = router
