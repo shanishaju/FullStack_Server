@@ -1,6 +1,11 @@
+const users = require("../modal/userModal");
+
+const jwt = require("jsonwebtoken")
+
+
+
 //register
 
-const users = require("../modal/userModal");
 
 exports.registerController= async(req,res)=>{
 
@@ -40,7 +45,10 @@ exports.loginController = async (req,res)=>{
        try {
               const existingUser =await users.findOne({email,password})
               if(existingUser){
-                     res.status(200).json(existingUser)
+                     //token
+                     const token= jwt.sign({userId:existingUser._id},'secretKey')
+
+                     res.status(200).json(existingUser , token)
               }
               else{
                      res.status(406).json("Invalid Username or Password")
