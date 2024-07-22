@@ -40,7 +40,7 @@ exports.registerController= async(req,res)=>{
 
 //login
 exports.loginController = async (req,res)=>{
-       const {email,password}= req.body
+       const {email, password}= req.body
        try {
               const existingUser =await users.findOne({email,password})
               if(existingUser){
