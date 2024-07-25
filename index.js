@@ -7,6 +7,9 @@ const  express = require('express')
 //import cors
 const cors = require('cors')
 
+//import appmiddleware
+// const app = require('./middleware/appMiddleware')
+
 //after creating routes file... import the router
 const router = require('./routes')
 
@@ -22,8 +25,12 @@ psServer.use(cors())
 //use json method - returns a middle ware which can pass  json
 psServer.use(express.json())
 
+// use appMW
+// psServer.use(app)
+
 //use router
 psServer.use(router)
+
 
 //set port for server
 PORT = 4000 || process.env.PORT

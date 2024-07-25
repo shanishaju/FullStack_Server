@@ -1,6 +1,7 @@
 // 1 import express
 const express = require ('express')
 
+
 // import  user controller after creatning controller flder
 const userController =require('./controller/userController')
 
@@ -8,6 +9,8 @@ const userController =require('./controller/userController')
 //import project controller
 const projectController = require('./controller/projectController')
 
+//imort jwtcontroller
+const jwt = require("./middleware/jwtMiddleware")
 // 2 create objecs for router class
 const router = new express.Router()
 
@@ -22,6 +25,6 @@ router.post('/register',userController.registerController )
 router.post('/login',userController.loginController)
 
 //addproject
-router.post('/addProject',projectController.addProjectController)
+router.post('/addProject' ,jwt,projectController.addProjectController)
 // 4 export the Rputer
 module.exports = router

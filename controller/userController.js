@@ -40,6 +40,7 @@ exports.registerController= async(req,res)=>{
 
 //login
 exports.loginController = async (req,res)=>{
+       console.log('inside log completed');
        const {email, password}= req.body
        try {
               const existingUser =await users.findOne({email,password})
@@ -50,7 +51,7 @@ exports.loginController = async (req,res)=>{
                      res.status(200).json({existingUser,token})
               }
               else{
-                     res.status(406).json("Invalid Username or Password")
+                  res.status(406).json("Invalid Username or Password")
               }
               
        } catch (error) {
