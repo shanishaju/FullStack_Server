@@ -11,6 +11,8 @@ const projectController = require('./controller/projectController')
 
 //imort jwtcontroller
 const jwt = require("./middleware/jwtMiddleware")
+const multerConfig = require('./middleware/multerMiddleware');
+
 // 2 create objecs for router class
 const router = new express.Router()
 
@@ -25,6 +27,6 @@ router.post('/register',userController.registerController )
 router.post('/login',userController.loginController)
 
 //addproject
-router.post('/addProject' ,jwt,projectController.addProjectController)
+router.post('/addProject' ,jwt, multerConfig.single('proimg'), projectController.addProjectController)
 // 4 export the Rputer
 module.exports = router
