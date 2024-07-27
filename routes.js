@@ -28,5 +28,15 @@ router.post('/login',userController.loginController)
 
 //addproject
 router.post('/addProject' ,jwt, multerConfig.single('proimg'), projectController.addProjectController)
+
+//all Projects
+router.get('/allProjects',jwt,projectController.getAllProjectsController)
+
+//home project
+router.get('/homeproject',projectController.homeProjectsController)
+
+//userProject
+router.get('/userProject',jwt,projectController.userProjectController)
+
 // 4 export the Rputer
 module.exports = router

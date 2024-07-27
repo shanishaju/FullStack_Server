@@ -31,3 +31,55 @@ exports.addProjectController = async(req,res)=>{
     }
   
 }
+
+//all projects
+exports.getAllProjectsController = async(req,res)=>{
+    const searchKey =req.query.search
+console.log(searchKey);
+    try {
+        const query ={
+            language:{$regex:searchKey,$options:'i'}
+        }
+        const allProjects = await projects.find(query)
+        if(allProjects)  {
+            res.status(200).json(allProjects)
+        }   
+        else{
+            res.status(406).json("No Project")
+        }   
+    } catch (error) {
+        res.status(401).json(error)
+    }
+}
+//home page 3 projects display
+
+exports.homeProjectsController = async(req,res)=>{
+    // const searchKey =req.query.search
+    // console.log(searchKey);
+    try {
+        const homeProjects = await projects.find().limit(3)
+        res.status(200).json(homeProjects)
+    } catch (error) {
+        res.status(401).json(error)
+    }
+}
+
+exports.userProjectController = async(req,res)=>{
+  const userId = req.payload
+  console.log(userId);
+  try {
+    const userProject = await projects.find({userId})
+    if(userProject){
+        res.status(200).json(userProject)
+
+    }
+    else{
+        res.status(406).json("no project added yet")
+    }
+
+  } catch (error) {
+    res.status(401).json(error)
+
+    
+  }
+}

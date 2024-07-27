@@ -31,6 +31,11 @@ psServer.use(express.json())
 //use router
 psServer.use(router)
 
+//to exprt folder from the server side to use in the client side 
+//first argument sgould the name in which we are using the folder in the client side
+//sec arg- static method to export the folder
+//static methd should have path of the export folder
+psServer.use('/uploads',express.static('./uploads'))
 
 //set port for server
 PORT = 4000 || process.env.PORT
