@@ -21,7 +21,7 @@ exports.addProjectController = async(req,res)=>{
                 userId
             })
             await newProject.save()
-            res.status(200).json(newProject)
+            res.status(200).json("Project added successfully")
             
         }
             
@@ -82,4 +82,20 @@ exports.userProjectController = async(req,res)=>{
 
     
   }
+}
+// User controller for deleting project using deleteone
+exports.deleteProjectController = async(req,res)=>{
+
+    const {id} = req.params
+    console.log(id);
+    // console.log(req.params);
+    try{
+        const deleteProject = await projects.findByIdAndDelete({_id:id}) /* deleteone returns boolean values */
+                                                            /* findByIdAndDelete - document */
+            res.status(200).json(deleteProject)
+        
+    }catch(err){
+        res.status(402).json(err)
+    }
+        
 }
