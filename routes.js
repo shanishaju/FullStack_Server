@@ -40,5 +40,8 @@ router.get('/userProject',jwt,projectController.userProjectController)
 // Delete projects
 router.delete('/delete/:id', projectController.deleteProjectController)
 
+//edit  projects
+router.put('/edit-project/:id', jwt, multerConfig.single(('proimg')), projectController.editProjectController)
+
 // 4 export the Rputer
 module.exports = router
