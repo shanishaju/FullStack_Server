@@ -38,9 +38,9 @@ exports.loginController = async (req, res) => {
   try {
     const exsistingUser = await users.findOne({ email, password });
     if (exsistingUser) {
-      //token
+      //token generating 
       const token = jwt.sign({ userId: exsistingUser._id }, "secretKey");
-
+     //send datas to frontend as object for more clarity
       res.status(200).json({ exsistingUser, token });
     } else {
       res.status(406).json("Invalid Username or Password");
