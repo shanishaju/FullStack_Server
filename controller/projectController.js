@@ -54,7 +54,7 @@ exports.homeProjectsController = async (req, res) => {
   // const searchKey =req.query.search
   // console.log(searchKey);
   try {
-    const homeProjects = await projects.find().limit(3);
+    const homeProjects = await projects.find().limit(6);
     res.status(200).json(homeProjects);
   } catch (error) {
     res.status(401).json(error);
