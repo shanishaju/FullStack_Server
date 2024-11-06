@@ -1,16 +1,16 @@
 //class 26-07-24 -multer
 // multer
-// import multer
+// 1) import multer
 const multer = require('multer')
 
-// Store file
+// 2) Store file
 const storage = multer.diskStorage({
-    // where the file is stored
+    //3)  where the file is stored
     destination:(req,file,callback)=>{
-        callback(null,'./uploads') /* path in which file is stored */
+        callback(null,'./uploads') /* path in which file is stored * create folder  */
     },
 
-    // by which name the file should be stored
+    //4)  by which name the file should be stored
     filename:(req,file,callback)=>{
         const filename = `image-${Date.now()}-${file.originalname}` /* format of storing the filename */
         callback(null,filename) /* Setting file name */

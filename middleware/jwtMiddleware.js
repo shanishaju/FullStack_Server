@@ -2,7 +2,7 @@
 
 const jwtMiddleware = (req,res,next)=>{
     //logic
-   console.log('inside mw');
+   console.log('inside jwtMiddleware');
     //access token
     const token = req.headers["authorization"].split(' ')[1]
 
